@@ -1,0 +1,2 @@
+What Is Confusion Matrix?
+Sol:A much better way to evaluate the performance of a classifieris to look at the confusion  matrix. the general idea is tocount the number of times instances of class A are classified as class B.

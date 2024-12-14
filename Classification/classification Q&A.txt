@@ -1,0 +1,37 @@
+What Is Confusion Matrix?
+Sol:A much better way to evaluate the performance of a classifieris to look at the confusion  matrix. the general idea is tocount the number of times instances of class A are classified as class B.
+ 
+what is precision and recall?
+
+1. Precision:
+Precision is the ratio of true positive predictions to the total number of predictions made as positive (true positives and false positives). It tells us how many of the predicted positive cases were actually positive.
+
+Formula:
+
+Precision=𝑇𝑃/𝑇𝑃+𝐹𝑃
+
+
+Recall (Sensitivity or True Positive Rate):
+Recall is the ratio of true positive predictions to the total number of actual positive instances (true positives and false negatives). 
+It tells us how many of the actual positive cases the model was able to identify.
+
+Formula:
+        Recall=𝑇𝑃/𝑇𝑃+𝐹𝑁
+
+
+what is ROC Curve?
+
+The receiver operating characteristic (ROC) plots the true positive rate.True Positive Rate (TPR) against the False Positive Rate (FPR) at various threshold settings. 
+TNR also called specificity
+​
+what is ROC AUC score?
+The ROC AUC score gives you an overall indication of the model's ability to make correct decisions by evaluating its performance across all thresholds. 
+A high ROC AUC score means that your model has a good capacity for making correct predictions, and it can guide you in choosing the best model or threshold to maximize your decision-making accuracy.
+
+what is OvO and OvR?
+One-vs-All (OvA): Trains a separate classifier for each class to distinguish it from the rest, resulting in 𝑘 classifiers. I
+t is computationally simpler and more suitable for problems with a larger number of classes.
+
+
+One-vs-One (OvO): Trains a separate classifier for every pair of classes, resulting in N(N−1)/2classifiers. 
+It works better when classes are well-separated but can become computationally expensive as the number of classes grows.

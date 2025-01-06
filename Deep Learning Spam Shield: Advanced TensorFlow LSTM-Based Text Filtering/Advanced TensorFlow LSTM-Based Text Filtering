@@ -11,3 +11,33 @@ TF (Term Frequency): How frequeny a term appears in a document.
 IDF (Inverse Document Frequency): Measures how common or rare a term is across all documents in the corpus. Words that appear in many documents have lower IDF.
 max_features=5000 limits the number of features (i.e., words) to the top 5000 most important words across all documents. It ensures that the feature matrix will not have more than 5000 columns 
 (i.e., no more than 5000 unique words will be considered).
+
+
+********************************************************************************************************************************************************************************************************
+model.add(Dropout(0.5))
+--------------------------
+Dropout(0.5): This line adds a dropout layer, which is a regularization technique used to prevent overfitting during training.
+0.5: This is the dropout rate. It means that during training, half (50%) of the neurons in this layer will be randomly "dropped" (i.e., their outputs will be set to zero).
+This helps to make the model less reliant on specific neurons, promoting generalization.
+
+**********************************************************************************************************************************************************************************************************
+3. model.add(Dense(units=1, activation='sigmoid'))
+--------------------------------------------------
+Dense(units=1, activation='sigmoid'): This line adds another dense layer, which is the output layer of the model.
+units=1: Since this is a binary classification problem, there is only one output neuron that will produce a value between 0 and 1, representing the predicted probability of the positive class.
+activation='sigmoid': The activation function used here is sigmoid, which squashes the output between 0 and 1. 
+This is ideal for binary classification tasks, where the output is interpreted as a probability (i.e., the probability of the instance belonging to the positive class).
+***********************************************************************************************************************************************************************************************************
+Dense Layer: A fully connected layer, where each neuron in the layer is connected to all neurons in the previous layer.
+units=50: The number of neurons in this hidden layer is set to 50.
+activation='relu': The ReLU (Rectified Linear Unit) activation function is used, which helps the model learn non-linear relationships and allows the network to perform better.
+input_dim=len(tfidf_vectorizer.get_feature_names_out()): This specifies the number of input features.
+In this case, it's set to the number of features produced by the TF-IDF vectorizer (assuming you have already vectorized text data).
+************************************************************************************************************************************************************************************************************
+
+Dropout Layer: It randomly sets a fraction (50% in this case) of input units to 0 at each update during training, helping prevent overfitting. By "dropping out" these neurons, 
+it forces the network to generalize better and reduces the chance of the model memorizing the training data.
+
+Dense Layer (Output): A fully connected layer with 1 neuron, which produces a single output.
+activation='sigmoid': The Sigmoid activation function is used for binary classification tasks. 
+It outputs a value between 0 and 1, which can be interpreted as a probability of belonging to the positive class.

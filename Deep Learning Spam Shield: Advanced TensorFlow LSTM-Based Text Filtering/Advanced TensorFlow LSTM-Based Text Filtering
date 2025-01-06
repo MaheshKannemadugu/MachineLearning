@@ -1,27 +1,13 @@
-1. TfidfVectorizer(max_features=5000)
+TfidfVectorizer(max_features=5000)
+
 TfidfVectorizer is a tool from the sklearn.feature_extraction.text module used to convert a collection of text documents into a matrix of TF-IDF (Term Frequency-Inverse Document Frequency) features.
 
 TF-IDF is a statistical measure used to evaluate how important a word is to a document in a collection of documents (corpus). It is computed as:
 
-TF-IDF
-(
-𝑡
-,
-𝑑
-)
-=
-TF
-(
-𝑡
-,
-𝑑
-)
-×
-IDF
-(
-𝑡
-)TF-IDF(t,d)=TF(t,d)×IDF(t)
+TF-IDF(𝑡,𝑑)=TF(𝑡,𝑑)×IDF(𝑡)TF-IDF(t,d)=TF(t,d)×IDF(t)
+
 where:
 TF (Term Frequency): How frequeny a term appears in a document.
 IDF (Inverse Document Frequency): Measures how common or rare a term is across all documents in the corpus. Words that appear in many documents have lower IDF.
-max_features=5000 limits the number of features (i.e., words) to the top 5000 most important words across all documents. It ensures that the feature matrix will not have more than 5000 columns (i.e., no more than 5000 unique words will be considered).
+max_features=5000 limits the number of features (i.e., words) to the top 5000 most important words across all documents. It ensures that the feature matrix will not have more than 5000 columns 
+(i.e., no more than 5000 unique words will be considered).

@@ -41,3 +41,89 @@ it forces the network to generalize better and reduces the chance of the model m
 Dense Layer (Output): A fully connected layer with 1 neuron, which produces a single output.
 activation='sigmoid': The Sigmoid activation function is used for binary classification tasks. 
 It outputs a value between 0 and 1, which can be interpreted as a probability of belonging to the positive class.
+**************************************************************************************************************************************************************************************************************
+ Optimizer: 'adam'
+What is it? The optimizer is responsible for adjusting the model's weights during training to minimize the loss function. The optimizer determines how to update the weights based on the gradients (calculated via backpropagation).
+'adam' is an adaptive moment estimation optimizer that combines the benefits of two other extensions of stochastic gradient descent: AdaGrad and RMSProp. It computes adaptive learning rates for each parameter by storing both the first-order momentum (the mean) and the second-order momentum (the uncentered variance).
+Why use it? It is widely used because it usually performs well in practice, is computationally efficient, and requires little memory. It adapts the learning rate during training, making it well-suited for problems with noisy gradients.
+2. Loss function: 'binary_crossentropy'
+What is it? The loss function measures how well the model's predictions match the true labels. It calculates the difference between the predicted values and the actual values, and the model aims to minimize this difference.
+'binary_crossentropy' is used for binary classification problems, where the goal is to classify input data into one of two classes (e.g., spam vs. not spam, positive vs. negative).
+The binary cross-entropy loss is calculated as:
+−
+(
+𝑦
+⋅
+log
+⁡
+(
+𝑝
+)
++
+(
+1
+−
+𝑦
+)
+⋅
+log
+⁡
+(
+1
+−
+𝑝
+)
+)
+−(y⋅log(p)+(1−y)⋅log(1−p))
+where y is the true label (0 or 1), and p is the predicted probability of the class being 1.
+Why use it? This is the standard loss function for binary classification problems because it efficiently penalizes the model's misclassifications.
+3. Metrics:
+The metrics argument is used to specify how we want to evaluate the performance of the model during training and testing. In this case, four metrics are provided:
+
+'accuracy':
+
+What is it? Accuracy is the most common metric for classification tasks. It measures the percentage of correct predictions.
+It is calculated as:
+Accuracy
+=
+Number of correct predictions
+Total number of predictions
+Accuracy= 
+Total number of predictions
+Number of correct predictions
+​
+ 
+Why use it? It's a simple, intuitive measure of how often the model's predictions are correct. However, it may not be very informative for imbalanced datasets, where the model might be biased toward the majority class.
+tf.keras.metrics.Precision():
+
+What is it? Precision measures how many of the predicted positive cases are actually positive. In other words, it calculates the ratio of true positive predictions to all positive predictions made by the model.
+
+It is defined as:
+Precision=True Positives/True Positives+False Positives
+ 
+Why use it? Precision is particularly useful when the cost of false positives is high. For example, in medical diagnoses, you may want to minimize false positives (incorrectly identifying a healthy patient as sick).
+tf.keras.metrics.Recall():
+
+What is it? Recall measures how many actual positive cases were correctly predicted by the model. It calculates the ratio of true positive predictions to all actual positives.
+It is defined as:
+Recall= True Positives 
+      --------------------
+     True Positives+False Negatives
+
+Why use it? Recall is important when the cost of false negatives is high. For instance, in disease detection, you might want to minimize false negatives (missing a sick patient who needs treatment).
+tf.keras.metrics.AUC():
+
+What is it? AUC (Area Under the Receiver Operating Characteristic Curve) measures the ability of the model to distinguish between positive and negative classes across various thresholds.
+The ROC curve plots the True Positive Rate (recall) against the False Positive Rate (1 - specificity) for different decision thresholds. 
+The AUC score gives you a single number that reflects the overall ability of the model to discriminate between the two classes. The value ranges from 0 to 1, with 1 indicating perfect discrimination and 0.5 indicating no discrimination (random guessing).
+Why use it? AUC is particularly useful for evaluating the model's performance on imbalanced datasets. It is more informative than accuracy, especially when dealing with classes of unequal sizes.
+
+Summary:
+
+optimizer='adam': Efficiently updates the model weights using adaptive learning rates.
+loss='binary_crossentropy': Measures the error for binary classification tasks.
+metrics=['accuracy', tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), tf.keras.metrics.AUC()]: Evaluates the model's performance using multiple metrics:
+Accuracy for overall correctness.
+Precision for the proportion of true positives among predicted positives.
+Recall for the proportion of true positives among actual positives.
+AUC for the ability to distinguish between classes.
